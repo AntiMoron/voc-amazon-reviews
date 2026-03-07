@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Amazon 评论 Claude 分析脚本
+# Amazon 评论分析脚本 - 使用 OpenClaw 默认模型
 # Usage: analyze.sh <reviews_json_file> <ASIN> [--output file.md]
 
 set -euo pipefail
@@ -22,7 +22,13 @@ if [[ -z "$REVIEWS_FILE" || ! -f "$REVIEWS_FILE" ]]; then
   exit 1
 fi
 
-echo "🤖 正在用 Claude 分析评论数据..." >&2
+if ! command -v openclaw &>/dev/null; then
+  echo "openclaw not found. Please install OpenClaw first." >&2
+  exit 1
+fi
+
+VOC_MODEL=$(openclaw models status --plain 2>/dev/null || echo "unknown")
+echo "Analyzing reviews with model: $VOC_MODEL ..." >&2
 
 # 读取评论数据
 REVIEWS_JSON=$(cat "$REVIEWS_FILE")
@@ -124,11 +130,22 @@ SUMMARY_EN: [One-sentence overall summary in English, under 30 words]
 PROMPT
 )
 
-# 调用 Claude Code CLI
-ANALYSIS=$(echo "$PROMPT" | claude -p --output-format text 2>/dev/null)
+# 调用 OpenClaw 默认模型
+SESSION_ID="voc-$(date +%s)"
+RESPONSE=$(openclaw agent --local --session-id "$SESSION_ID" -m "$PROMPT" --json 2>/dev/null)
 
-if [[ -z "$ANALYSIS" ]]; then
-  echo "❌ Claude 分析失败，请确保已登录 Claude Code" >&2
+ANALYSIS=$(echo "$RESPONSE" | python3 -c "
+import sys, json
+r = json.load(sys.stdin)
+payloads = r.get('payloads', [])
+if payloads:
+    print(payloads[0].get('text', ''))
+else:
+    print('ERROR: empty response')
+" 2>/dev/null)
+
+if [[ -z "$ANALYSIS" ]] || echo "$ANALYSIS" | grep -q "^ERROR:"; then
+  echo "❌ OpenClaw 调用失败: $ANALYSIS" >&2
   exit 1
 fi
 
@@ -157,8 +174,8 @@ neg = get('SENTIMENT_NEGATIVE')
 report = f"""
 ╔══════════════════════════════════════════════════════════════╗
 ║          VOC AI 分析报告 / VOC AI Analysis Report           ║
-║  ASIN: ${ASIN:<10}  |  分析评论: ${TOTAL} 条               ║
-║  市场: amazon.com   |  生成时间: ${TODAY}                ║
+║  ASIN: $ASIN  |  analyzed: $TOTAL reviews                   ║
+║  Market: amazon.com  |  Generated: $TODAY                   ║
 ╚══════════════════════════════════════════════════════════════╝
 
 📊 情感分布 / Sentiment Distribution

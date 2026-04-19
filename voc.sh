@@ -68,7 +68,8 @@ done
 
 if [[ -z "$ASIN" ]]; then
   echo -e "${RED}Please provide an ASIN${NC}" >&2
-  usage
+  echo "Run 'voc.sh --help' for usage." >&2
+  exit 1
 fi
 
 # Validate ASIN format (10 alphanumeric chars)

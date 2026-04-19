@@ -5,33 +5,34 @@
 <h1 align="center">VOC Amazon Reviews</h1>
 
 <p align="center">
-  <strong>AI-powered Amazon review analysis that turns customer voices into actionable product intelligence.</strong>
+  <strong>Analyze any Amazon product's reviews in 5 seconds — real API data, AI-powered insights, 10 marketplaces.</strong>
 </p>
 
 <p align="center">
-  <a href="#quick-start"><img src="https://img.shields.io/badge/setup-3min-brightgreen?style=flat-square" alt="3min Setup"></a>
+  <a href="#quick-start"><img src="https://img.shields.io/badge/setup-30sec-brightgreen?style=flat-square" alt="30s Setup"></a>
   <a href="https://openclaw.ai"><img src="https://img.shields.io/badge/OpenClaw-compatible-blue?style=flat-square" alt="OpenClaw"></a>
   <a href="https://claude.ai/code"><img src="https://img.shields.io/badge/Claude%20Code-skill-8A2BE2?style=flat-square" alt="Claude Code"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green?style=flat-square" alt="MIT License"></a>
-  <img src="https://img.shields.io/badge/bash-3.2+-4EAA25?style=flat-square&logo=gnubash&logoColor=white" alt="Bash 3.2+">
-  <img src="https://img.shields.io/badge/markets-6%20Amazon%20regions-FF9900?style=flat-square&logo=amazon&logoColor=white" alt="6 Marketplaces">
+  <img src="https://img.shields.io/badge/markets-10%20Amazon%20regions-FF9900?style=flat-square&logo=amazon&logoColor=white" alt="10 Marketplaces">
 </p>
 
 <p align="center">
-  <a href="#install">Install</a> &bull;
+  <a href="#quick-start">Quick Start</a> &bull;
+  <a href="#demo">Demo</a> &bull;
   <a href="#usage">Usage</a> &bull;
-  <a href="#sample-output">Sample Output</a> &bull;
   <a href="#how-it-works">How It Works</a> &bull;
   <a href="docs/ROADMAP.md">Roadmap</a>
 </p>
 
 ---
 
-**Input an ASIN. Get deep bilingual insights.** Scrapes real Amazon reviews with browser automation (bypassing anti-bot), then runs them through AI for semantic VOC analysis. No keyword counting — actual language understanding.
+## Demo
 
 <p align="center">
-  <img src="docs/screenshots/voc-report.png" width="600" alt="VOC Report Screenshot">
+  <img src="demo/voc-demo.gif" width="700" alt="VOC AI Demo — ASIN to report in 5 seconds">
 </p>
+
+> **Input an ASIN. Get deep bilingual insights in 5 seconds.** Fetches real Amazon reviews via Shulex VOC API, then runs AI semantic analysis — sentiment, pain points, selling points, and listing optimization tips. Not keyword counting. Actual language understanding.
 
 ## Features
 
@@ -42,162 +43,114 @@
 | **Selling Points** | Top 5 things buyers love with real quotes and mention counts |
 | **Listing Optimization** | Actionable copy suggestions backed by review data |
 | **Bilingual Output** | Every insight in both English and Chinese |
-| **Multi-Market** | Supports 6 Amazon regions (US, UK, DE, JP, CA, FR) |
-| **Anti-Bot Bypass** | Browserbase stealth mode + residential proxy |
-| **Natural Language** | Just tell Claude "analyze reviews for ASIN B08N5..." |
+| **10 Marketplaces** | US, CA, MX, GB, DE, FR, IT, ES, JP, AU |
+| **Zero Dependencies** | Only needs `curl` + `python3` (no browser, no npm) |
+| **Free to Start** | 8 reviews = 5 credits. New accounts include starter credits |
 
 ## Quick Start
 
-```bash
-# One-line install (Claude Code)
-mkdir -p .claude/skills && cd .claude/skills && git clone https://github.com/mguozhen/voc-amazon-reviews.git
+**Step 1** — Get your free API key (30 seconds):
 
-# Or via OpenClaw
-clawhub install voc-amazon-reviews
-```
+👉 [**apps.voc.ai/openapi**](https://apps.voc.ai/openapi?utm_source=github&utm_medium=readme&utm_campaign=launch_apr)
 
-Then just ask Claude:
-
-> "Analyze the reviews for ASIN B08N5WRWNW"
-
-That's it. No config files. No API keys to juggle.
-
-## Install
-
-### Claude Code
-```bash
-mkdir -p .claude/skills
-cd .claude/skills
-git clone https://github.com/mguozhen/voc-amazon-reviews.git voc-amazon-reviews
-```
-
-### OpenClaw
-```bash
-clawhub install voc-amazon-reviews
-```
-
-## Setup
-
-<details>
-<summary><strong>1. Browser skill (required)</strong></summary>
+**Step 2** — Clone and run:
 
 ```bash
-npx skills add browserbase/skills@browser
-```
-</details>
-
-<details>
-<summary><strong>2. Browserbase account (recommended)</strong></summary>
-
-Handles Amazon's anti-bot, CAPTCHAs, and residential proxies. [Sign up free](https://browserbase.com).
-
-```bash
-export BROWSERBASE_API_KEY="your-key"
-export BROWSERBASE_PROJECT_ID="your-project-id"
-browse env remote
+git clone https://github.com/mguozhen/voc-amazon-reviews.git
+cd voc-amazon-reviews
+export VOC_API_KEY="your-key"
+bash voc.sh B08N5WRWNW
 ```
 
-Without Browserbase, the scraper falls back to local Chrome but may be blocked by Amazon's sign-in wall.
-</details>
-
-<details>
-<summary><strong>3. OpenClaw model (auto-configured)</strong></summary>
-
-The skill uses whatever model is currently configured in OpenClaw. No separate API key needed.
-
-```bash
-openclaw models status    # Check current model
-openclaw models set       # Switch model
-```
-</details>
+That's it. No Docker. No npm install. No config files.
 
 ## Usage
 
-### Natural language (just talk to Claude)
-
-```
-"Analyze the reviews for ASIN B08N5WRWNW"
-"Do a VOC analysis on this product: B0F6VWT6SP"
-"What are customers complaining about for B09G9HD6PD?"
-"Find the top selling points from Amazon reviews for B08XYZ"
-```
-
-### CLI
-
 ```bash
-# Basic analysis (100 reviews)
-bash skills/voc-amazon-reviews/voc.sh B08N5WRWNW
+# Quick analysis — 8 reviews (5 credits)
+bash voc.sh B08N5WRWNW
 
-# Deep analysis (200 reviews)
-bash skills/voc-amazon-reviews/voc.sh B08N5WRWNW --limit 200
+# Deep analysis — 100 reviews (50 credits)
+bash voc.sh B08N5WRWNW --limit 100
 
-# UK marketplace
-bash skills/voc-amazon-reviews/voc.sh B08N5WRWNW --market amazon.co.uk
+# Japan marketplace
+bash voc.sh B08N5WRWNW --market JP
 
-# Save report
-bash skills/voc-amazon-reviews/voc.sh B08N5WRWNW --output report.md
+# Save report to file
+bash voc.sh B08N5WRWNW --limit 100 --output report.md
 ```
 
 ### Options
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `--limit N` | 100 | Number of reviews to scrape |
-| `--market DOMAIN` | amazon.com | Amazon region (`.co.uk`, `.de`, `.co.jp`, `.ca`, `.fr`) |
+| `--limit N` | 8 | Number of reviews to fetch |
+| `--market CODE` | US | Amazon marketplace (US CA MX GB DE FR IT ES JP AU) |
 | `--output FILE` | stdout | Save report to markdown file |
 | `--help` | — | Show help |
+
+### Cost Guide
+
+| Reviews | Credits | Use Case |
+|---------|---------|----------|
+| 8 (default) | 5 | Quick competitor check |
+| 50 | 25 | Product validation |
+| 100 | 50 | Deep analysis |
+| 200 | 100 | Comprehensive audit |
 
 ## Sample Output
 
 ```
 ╔══════════════════════════════════════════════════════════════╗
-║                  VOC AI Analysis Report                     ║
-║  ASIN: B08N5WRWNW  |  Reviews analyzed: 100                ║
-║  Market: amazon.com  |  Generated: 2026-03-08              ║
+║          VOC AI 分析报告 / VOC AI Analysis Report           ║
+║  ASIN: B099Z93WD9  |  analyzed: 8 reviews                   ║
+║  Market: US  |  Generated: 2026-04-19                        ║
 ╚══════════════════════════════════════════════════════════════╝
 
-📊 Sentiment Distribution
-  Positive  ████████████████░░░░  74%
-  Neutral   ███░░░░░░░░░░░░░░░░░  16%
-  Negative  ██░░░░░░░░░░░░░░░░░░  10%
+📊 情感分布 / Sentiment Distribution
+─────────────────────────────────────────
+  正面 Positive  ████████░░░░░░░░░░░░  37%
+  中性 Neutral   ██░░░░░░░░░░░░░░░░░░  13%
+  负面 Negative  ██████████░░░░░░░░░░  50%
 
-🔴 Top 5 Pain Points
-══════════════════════════════════════════════════════════════
-1. Short battery life (28 mentions)
-   "Battery drained in 2 days, very disappointed"
+🔴 Top 5 痛点 / Pain Points
+═══════════════════════════════════════════════════════════════
+1. 充电口故障 / Charging port moisture glitch（2 条提及）
+   「充电口提示有水分，已知bug，一周都没恢复」
+   "Moisture in charging port — known glitch, can't charge"
 
-2. Unstable Bluetooth connection (19 mentions)
-   "Keeps disconnecting randomly, have to re-pair every day"
-   ...
+2. 视频卡顿 / Video stalling and weak connection（2 条提及）
+   「看视频经常卡顿暂停，给小孩看的时候很烦」
+   "Stalls out, pausing videos, really annoying"
 
-🟢 Top 5 Selling Points
-══════════════════════════════════════════════════════════════
-1. Excellent sound quality (52 mentions)
-   "Amazing bass and crystal clear highs for the price"
-   ...
+🟢 Top 5 卖点 / Selling Points
+═══════════════════════════════════════════════════════════════
+1. 性价比高 / Great value for money（3 条提及）
+   「价格实惠，功能齐全，看电影看书玩游戏都行」
+   "Budget friendly, entertainment on the go"
 
-💡 Listing Optimization Suggestions
-══════════════════════════════════════════════════════════════
-1. Add battery capacity (e.g. 800mAh) and playtime to title
-   → reduces 1-star reviews from mismatched expectations
+2. 便携尺寸 / Perfect portable size（2 条提及）
+   「尺寸刚好，放包里轻松带上飞机看电影」
+   "Perfect size, light and easy to fit in my purse"
 
-2. Lead with sound quality in first bullet —
-   → use customer language: "crystal clear" and "deep bass"
-   ...
+💡 Listing 优化建议 / Optimization Suggestions
+═══════════════════════════════════════════════════════════════
+1. Highlight budget-friendly and portability in title
+2. Add charging port care instructions in A+ Content
+3. Guide users to sideload popular apps
 ```
 
 ## How It Works
 
 ```
 ┌─────────────┐     ┌──────────────────┐     ┌─────────────────┐
-│  Input ASIN │────▶│  Browser Scraper  │────▶│  AI Analysis    │
-│             │     │  (Browserbase)    │     │  (OpenClaw)     │
-└─────────────┘     │                  │     │                 │
-                    │  • Stealth mode  │     │  • Sentiment    │
-                    │  • Anti-bot      │     │  • Pain points  │
-                    │  • Pagination    │     │  • Sell points   │
-                    │  • Multi-market  │     │  • Optimization │
-                    └──────────────────┘     └────────┬────────┘
+│  Input ASIN │────▶│  Shulex VOC API  │────▶│  AI Analysis    │
+│             │     │                  │     │                 │
+│  B099Z93WD9 │     │  • Real reviews  │     │  • Sentiment    │
+│  --market US│     │  • 10 markets    │     │  • Pain points  │
+│  --limit 8  │     │  • 5s response   │     │  • Sell points  │
+│             │     │  • No scraping   │     │  • Optimization │
+└─────────────┘     └──────────────────┘     └────────┬────────┘
                                                       │
                                                       ▼
                                             ┌─────────────────┐
@@ -210,23 +163,29 @@ bash skills/voc-amazon-reviews/voc.sh B08N5WRWNW --output report.md
 
 ```
 voc-amazon-reviews/
-├── SKILL.md       # Skill definition (Claude/OpenClaw reads this)
-├── voc.sh         # Main entry point
-├── scraper.sh     # Amazon review scraper (uses browse CLI)
-├── analyze.sh     # AI analysis + report renderer
+├── SKILL.md        # Skill definition (Claude/OpenClaw)
+├── voc.sh          # Main entry point
+├── fetch.sh        # Shulex VOC API client
+├── analyze.sh      # AI analysis + report renderer
+├── scraper.sh      # Legacy browser scraper (deprecated)
+├── tests/
+│   ├── test_unit.sh        # 50 unit tests
+│   └── test_regression.sh  # 17 regression tests (live API)
+├── demo/
+│   ├── voc-demo.gif        # Demo recording
+│   └── demo.sh             # Demo script
 └── docs/
-    ├── GTM.md           # Go-to-market strategy
-    ├── ROADMAP.md       # Product roadmap
-    ├── STORY.md         # Project narrative
-    └── screenshots/     # Report screenshots
+    ├── GTM.md        # Go-to-market strategy
+    ├── ROADMAP.md    # Product roadmap
+    └── STORY.md      # Project narrative
 ```
 
 ## FAQ
 
 <details>
-<summary><strong>Why not use the Amazon Product Advertising API?</strong></summary>
+<summary><strong>Where does the review data come from?</strong></summary>
 
-Amazon's API doesn't expose review text — only aggregate star ratings. Seller Central exports are manual and incomplete. Real browser scraping is the only way to get the actual voice of your customers.
+Reviews are fetched via the [Shulex VOC API](https://apps.voc.ai/openapi?utm_source=github&utm_medium=readme&utm_campaign=launch_apr) — a legitimate data provider with proper Amazon data licensing. No scraping. No browser automation. Just a clean API call.
 </details>
 
 <details>
@@ -234,28 +193,30 @@ Amazon's API doesn't expose review text — only aggregate star ratings. Seller 
 
 | Component | Cost |
 |-----------|------|
-| Browserbase session | ~$0.01/run |
-| AI model analysis | Depends on your OpenClaw model |
+| VOC API (8 reviews) | 5 credits |
+| VOC API (100 reviews) | 50 credits |
+| AI analysis | Depends on your OpenClaw model |
 
-Running on local Chrome (no Browserbase) is free but may be blocked by Amazon. Total cost per analysis is typically under $0.05.
+New accounts include starter credits — enough for multiple analyses. [Get your free API key](https://apps.voc.ai/openapi?utm_source=github&utm_medium=readme&utm_campaign=launch_apr).
 </details>
 
 <details>
 <summary><strong>Is this against Amazon's Terms of Service?</strong></summary>
 
-This tool accesses publicly visible review pages the same way a browser does. Use responsibly — avoid high-frequency scraping of the same ASIN.
+No. This tool uses the Shulex VOC API, which is a licensed data provider. It does not scrape Amazon directly.
 </details>
 
 <details>
 <summary><strong>What about API keys and security?</strong></summary>
 
-`BROWSERBASE_API_KEY` is read from environment variables — never written to disk or printed to stdout. Analysis runs through OpenClaw's configured model, so no separate LLM API key is needed. Use shell-level `export`, not inline assignments, as AI agent session logs may capture tool call arguments.
+`VOC_API_KEY` is read from environment variables — never written to disk or printed to stdout.
 </details>
 
 ## Related
 
-- [VOC AI](https://www.voc.ai) — Full-featured Amazon review analytics platform (2B+ reviews indexed)
-- [Social Reply Bot](https://github.com/mguozhen/social-bot) — AI-powered Reddit & X auto-reply bot
+- [VOC AI](https://www.voc.ai) — Full-featured Amazon review analytics platform
+- [VOC Open API](https://apps.voc.ai/openapi?utm_source=github&utm_medium=readme&utm_campaign=launch_apr) — Get your free API key
+- [Social Reply Bot](https://github.com/mguozhen/social-bot) — AI-powered social media bot
 - [Solvea](https://solvea.cx) — AI receptionist for small businesses
 
 ## License

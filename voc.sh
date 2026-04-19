@@ -45,7 +45,7 @@ usage() {
   echo ""
   echo "Environment:"
   echo "  VOC_API_KEY      Shulex VOC API key (required)"
-  echo "                   Get yours free: https://apps.voc.ai/openapi"
+  echo "                   Get yours free: https://apps.voc.ai/openapi?utm_source=skill&utm_medium=onboarding&utm_campaign=launch_apr"
   exit 0
 }
 
@@ -96,8 +96,8 @@ check_deps() {
     echo -e "${YELLOW}  VOC_API_KEY not set.${NC}" >&2
     echo "" >&2
     echo -e "  Get your ${GREEN}free${NC} API key in 30 seconds:" >&2
-    echo -e "  ${CYAN}1.${NC} Register:   https://apps.voc.ai/openapi" >&2
-    echo -e "  ${CYAN}2.${NC} Create key: https://apps.voc.ai/openapi/keys" >&2
+    echo -e "  ${CYAN}1.${NC} Register:   https://apps.voc.ai/openapi?utm_source=skill&utm_medium=onboarding&utm_campaign=launch_apr" >&2
+    echo -e "  ${CYAN}2.${NC} Create key: https://apps.voc.ai/openapi/keys?utm_source=skill&utm_medium=onboarding&utm_campaign=launch_apr" >&2
     echo -e "  ${CYAN}3.${NC} Set it:     export VOC_API_KEY=your-key" >&2
     echo "" >&2
     echo "  New accounts include starter credits (8 reviews = 5 credits)." >&2
@@ -146,7 +146,7 @@ if [[ "$REVIEW_COUNT" -eq 0 ]]; then
   echo -e "${RED}No reviews retrieved. Check:${NC}" >&2
   echo "   - Is the ASIN correct?" >&2
   echo "   - Does this product have reviews?" >&2
-  echo "   - Is your API key valid? Check: https://apps.voc.ai/openapi/keys" >&2
+  echo "   - Is your API key valid? Check: https://apps.voc.ai/openapi/keys?utm_source=skill&utm_medium=onboarding&utm_campaign=launch_apr" >&2
   exit 1
 fi
 
@@ -176,7 +176,7 @@ if [[ "$LIMIT" -le 8 && "$TOTAL_AVAIL" != "?" ]]; then
     echo ""
     echo -e "    ${GREEN}voc.sh $ASIN --limit 100${NC}"
     echo ""
-    echo -e "  Need more credits? ${CYAN}https://apps.voc.ai/openapi/billing${NC}"
+    echo -e "  Need more credits? ${CYAN}https://apps.voc.ai/openapi/billing?utm_source=skill&utm_medium=report_cta&utm_campaign=launch_apr${NC}"
     echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
   fi
 fi

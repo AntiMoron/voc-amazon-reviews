@@ -43,9 +43,9 @@ if [[ -z "$API_KEY" ]]; then
   ║  VOC_API_KEY not set — free registration to get started ║
   ╚══════════════════════════════════════════════════════════╝
 
-  1. Register (free):  https://apps.voc.ai/openapi
-  2. Create API key:   https://apps.voc.ai/openapi/keys
-  3. Buy credits:      https://apps.voc.ai/openapi/billing
+  1. Register (free):  https://apps.voc.ai/openapi?utm_source=skill&utm_medium=onboarding&utm_campaign=launch_apr
+  2. Create API key:   https://apps.voc.ai/openapi/keys?utm_source=skill&utm_medium=onboarding&utm_campaign=launch_apr
+  3. Buy credits:      https://apps.voc.ai/openapi/billing?utm_source=skill&utm_medium=onboarding&utm_campaign=launch_apr
   4. Set your key:     export VOC_API_KEY=your-key
 
   New accounts include starter credits — enough for 8+ reviews.

@@ -1,10 +1,22 @@
-# VOC AI Skill — GTM Strategy
+# VOC AI Skill — GTM Strategy (v2, April 2026)
 
 ## Positioning
 
-> **"The only Amazon review analyzer that lives inside your AI agent — free, bilingual, no setup."**
+> **"5 seconds to analyze any Amazon product's reviews — real API data, 10 marketplaces, free to start."**
 >
-> 中文版：**"装进 AI Agent 的亚马逊评论分析师，免费用，30秒出报告"**
+> 中文版：**"5秒分析亚马逊竞品评论，真实API数据，10个站点，免费起步"**
+
+---
+
+## Core Conversion Funnel
+
+```
+Skill install → try 8 free reviews (5 credits)
+    → register API key at apps.voc.ai/openapi
+    → buy credits → power user (100+ reviews)
+```
+
+**Primary KPI: VOC API 新注册数 (apps.voc.ai/openapi)**
 
 ---
 
@@ -12,88 +24,123 @@
 
 | Layer | Audience | Channel |
 |---|---|---|
-| **Layer 1** Seed | Tech-savvy sellers using Claude Code / OpenClaw | ClawHub, GitHub, Reddit r/FulfillmentByAmazon |
-| **Layer 2** Core | Chinese cross-border sellers (with ops teams) | 跨境知道, 卖家之家, WeChat groups |
-| **Layer 3** Expansion | Mainstream sellers reached via word-of-mouth / KOL | YouTube, TikTok, Twitter/X |
+| **Layer 1** Seed | Tech-savvy sellers using Claude Code / OpenClaw | ClawHub, GitHub, Reddit, Twitter/X |
+| **Layer 2** Core | Chinese cross-border sellers | 知乎, 小红书, 微信群, 卖家之家 |
+| **Layer 3** Expansion | Mainstream sellers via KOL / word-of-mouth | YouTube, TikTok, Facebook groups |
 
 ---
 
-## Phase 1 — Seeding (Week 1–2)
+## Week 1 — All-Channel Launch (4/21–4/27)
 
-**Goal: Build initial credibility in tech communities. Reach first 100 real users.**
+### Day 1: Content Production
+- Record 30s demo GIF (terminal: `voc.sh B099Z93WD9`)
+- Annotate report screenshot (highlight pain points / selling points)
+- Prepare 4 text versions: Twitter / Reddit / Facebook / Chinese
 
-- **ClawHub launch** ✅ Live
-  - Add demo GIF / screenshot to README
-  - Add keywords to description: `amazon`, `seller`, `voc`, `review analysis`
+### Day 2: Twitter/X Launch (10am ET)
+- 7-tweet thread: hook → problem → how it works → real output → 10 markets → zero deps → CTA
+- Tags: `#AmazonFBA #AmazonSeller #AITools #ecommerce`
 
-- **GitHub README**
-  - Add a real report screenshot (highest-converting single asset)
-  - Add topics: `amazon-seller`, `voc`, `openclaw`, `ai-agent`
+### Day 3: Reddit r/FulfillmentByAmazon
+- Title: "I built a free CLI tool that analyzes Amazon reviews with AI — 5 seconds"
+- Authentic tone, offer to run ASINs for commenters
+- Link only to GitHub (API link lives in README)
 
-- **Reddit posts**
-  - r/FulfillmentByAmazon: *"Built a free AI tool that analyzes Amazon reviews inside your terminal — feedback welcome"*
-  - r/AmazonSeller, r/openclaw
+### Day 4-6: Facebook Groups (Alex Shu / FB_OP001)
+- 3-4 groups per day, different copy per group, niche-matched ASINs
+- End with: "Drop an ASIN below, I'll run it for you"
 
-- **Twitter/X launch**
-  - 30s demo video: ASIN in → report out
-  - Tags: `#AmazonFBA #AITools #openclaw`
+### Day 5: Reddit r/AmazonSeller
 
----
+### Day 6: Zhihu Article
+- Title: 跨境电商必备：5秒分析亚马逊竞品评论，找到Listing优化突破口
 
-## Phase 2 — Traction (Week 3–6)
-
-**Goal: Break into Chinese seller communities. Hit 50+ daily analysis runs.**
-
-- **WeChat groups / 知识星球**
-  - Target: 卖家之家, 跨境电商精英圈
-  - Hook: *"用 AI 帮你分析竞品差评，找 Listing 优化点，免费用"*
-  - Attach a real competitor report screenshot
-
-- **Cross-border forums**
-  - 跨境知道, 雨果网: tutorial article
-  - Title: *《用 AI 30 秒分析亚马逊评论，找到竞品 Listing 漏洞》*
-
-- **YouTube KOL (1–2 creators)**
-  - Target: 1–50k subscriber cross-border seller tutorial channels
-  - Format: free review in exchange for tutorial coverage
+### Day 7: Xiaohongshu Note
+- 6-9 image carousel + tags: #亚马逊 #跨境电商 #FBA #竞品分析
 
 ---
 
-## Phase 3 — Conversion (Week 6–12)
+## Week 2 — Engagement & Amplification (4/28–5/4)
 
-**Goal: Convert Skill users into voc.ai paid subscribers.**
-
-- **In-report CTA** (after Phase 1 Roadmap feature ships)
-  - Upgrade prompt at end of every analysis
-  - UTM tracking on all links
-
-- **Case studies**
-  - 2–3 real sellers: "Found review root cause with VOC AI → fixed Listing → rating improved"
-  - Publish to forums + Twitter + official site
-
-- **Launch promotion**
-  - *"Sign up to voc.ai via Skill — 50% off first month"*
-  - Featured in README and report CTA
+- Reply to all comments; run free ASIN analyses for anyone who asks
+- Twitter: 3 follow-up posts (trending ASIN, JP market demo, GIF repost)
+- Zhihu: Publish STORY.md as second article
+- Reddit: r/SideProject (developer angle)
+- Facebook: remaining groups + follow-up in high-engagement ones
+- WeChat: share Zhihu link + "发 ASIN 帮你跑"
 
 ---
 
-## Content Assets Needed
+## Week 3 — KOL Outreach (5/5–5/11)
 
-| Asset | Format | Priority |
+| Budget Item | Amount |
+|---|---|
+| English KOL (Twitter/YouTube, 5k-30k followers) | $75 |
+| Chinese KOL (小红书/知乎) | $75 |
+| Twitter promoted tweet (boost best thread) | $30 |
+| Demo API credits (for comment requests) | $20 |
+| **Total** | **$200** |
+
+- Provide KOLs: free API key + extra credits + 3 suggested ASINs
+- Format: genuine use experience, not scripted
+
+Additional content:
+- Twitter "weekly analysis" thread (pick trending category, analyze 3 competitors)
+- Zhihu: answer 3-5 existing questions about 亚马逊评论分析
+- Xiaohongshu: niche deep-dive note (e.g., "AI分析10款蓝牙耳机的差评")
+
+---
+
+## Week 4 — Review & Optimize (5/12–5/18)
+
+- Compile UTM data, identify highest-converting channel
+- Write 2-3 user case studies
+- Facebook: "30 days of VOC AI" summary post
+- Check report CTA click-through rate
+- Plan Month 2 based on data
+
+---
+
+## UTM Tracking
+
+```
+https://apps.voc.ai/openapi?utm_source={channel}&utm_medium={format}&utm_campaign=launch_apr
+```
+
+| Source | utm_source | utm_medium |
 |---|---|---|
-| Demo video (ASIN → full report flow) | 30s GIF + 60s MP4 | 🔴 P0 |
-| Real report screenshot | PNG | 🔴 P0 |
-| Tutorial article (Chinese) | Markdown | 🟡 P1 |
-| Case study (English) | Blog post | 🟡 P1 |
-| Twitter launch thread | 5–7 tweets | 🟢 P2 |
+| Twitter launch | twitter | launch_thread |
+| Twitter follow-up | twitter | followup |
+| Reddit r/FBA | reddit | rfba |
+| Reddit r/AmazonSeller | reddit | ramazonseller |
+| Facebook groups | facebook | group_post |
+| Zhihu | zhihu | tutorial |
+| Xiaohongshu | xiaohongshu | note |
+| WeChat | wechat | group_share |
+| KOL English | kol | en_creator |
+| KOL Chinese | kol | cn_creator |
+| GitHub README | github | readme |
+| Skill report CTA | skill | report_cta |
 
 ---
 
-## Success Metrics
+## Success Metrics (Month 1)
 
-| Timeline | Metric | Target |
-|---|---|---|
-| Week 2 | ClawHub installs | 50 |
-| Week 4 | Monthly analysis runs | 200 |
-| Week 6 | voc.ai website clicks | 100 |
-| Week 12 | Paid subscriptions from Skill | 10 |
+| Metric | Week 1-2 | Week 3-4 | Month 1 Total |
+|---|---|---|---|
+| VOC API registrations | 15 | 35 | **50** |
+| Twitter impressions | 5,000 | 15,000 | 20,000 |
+| Reddit karma | 50 | 50 | 100 |
+| GitHub stars | 10 | 20 | **30** |
+| Facebook engagement | 30 | 50 | 80 |
+| Zhihu views | 500 | 1,500 | 2,000 |
+| Xiaohongshu impressions | 1,000 | 4,000 | 5,000 |
+
+---
+
+## Risk Mitigation
+
+- **Reddit**: Engage 2-3 days before posting. Frame as sharing, not selling.
+- **Facebook**: Max 4 groups/day, unique copy per group, 2hr spacing.
+- **Amazon TOS**: We use Shulex VOC API (legitimate data provider), not scraping.
+- **Low engagement**: If Twitter < 1000 impressions → immediately boost with $30 budget.

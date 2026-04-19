@@ -13,8 +13,8 @@ metadata:
 
 ## Quick Setup (30 seconds)
 
-1. **Get your free API key** at [apps.voc.ai/openapi](https://apps.voc.ai/openapi)
-2. **Create a key** at [API Keys page](https://apps.voc.ai/openapi/api/keys)
+1. **Get your free API key** at [apps.voc.ai/openapi](https://apps.voc.ai/openapi?utm_source=github&utm_medium=readme&utm_campaign=launch_apr)
+2. **Create a key** at [API Keys page](https://apps.voc.ai/openapi/api/keys?utm_source=github&utm_medium=readme&utm_campaign=launch_apr)
 3. **Set it**:
 
 ```bash
@@ -119,10 +119,10 @@ bash ~/.agents/skills/voc-amazon-reviews/voc.sh B08N5WRWNW --limit 100 --output 
 
 | Variable | Required | Description |
 |----------|----------|-------------|
-| `VOC_API_KEY` | Yes | Shulex VOC API key ([get one free](https://apps.voc.ai/openapi/api/keys)) |
+| `VOC_API_KEY` | Yes | Shulex VOC API key ([get one free](https://apps.voc.ai/openapi/api/keys?utm_source=github&utm_medium=readme&utm_campaign=launch_apr)) |
 
 ## Resources
 
-- [Shulex VOC API Docs](https://apps.voc.ai/openapi)
-- [API Keys](https://apps.voc.ai/openapi/api/keys)
-- [Buy Credits](https://apps.voc.ai/openapi/api/billing)
+- [Shulex VOC API Docs](https://apps.voc.ai/openapi?utm_source=github&utm_medium=readme&utm_campaign=launch_apr)
+- [API Keys](https://apps.voc.ai/openapi/api/keys?utm_source=github&utm_medium=readme&utm_campaign=launch_apr)
+- [Buy Credits](https://apps.voc.ai/openapi/api/billing?utm_source=github&utm_medium=readme&utm_campaign=launch_apr)
